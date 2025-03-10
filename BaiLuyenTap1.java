@@ -1,6 +1,5 @@
 package baitap;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class BaiLuyenTap1 {
@@ -112,15 +111,34 @@ public class BaiLuyenTap1 {
                             others[otherCount++] = arr[i];
                         }
                     }
-
-                    Arrays.sort(evenDiv3, 0, evenCount);
-                    Arrays.sort(oddDiv3, 0, oddCount);
-                    for (int i = 0; i < oddCount / 2; i++) {
-                        int temp = oddDiv3[i];
-                        oddDiv3[i] = oddDiv3[oddCount - 1 - i];
-                        oddDiv3[oddCount - 1 - i] = temp;
+                    for (int i = 0; i < evenCount - 1; i++) {
+                        for (int j = 0; j < evenCount - i - 1; j++) {
+                            if (evenDiv3[j] > evenDiv3[j + 1]) {
+                                int temp = evenDiv3[j];
+                                evenDiv3[j] = evenDiv3[j + 1];
+                                evenDiv3[j + 1] = temp;
+                            }
+                        }
                     }
-                    Arrays.sort(others, 0, otherCount);
+                    for (int i = 0; i < otherCount - 1; i++) {
+                        for (int j = 0; j < otherCount - i - 1; j++) {
+                            if (others[j] > others[j + 1]) {
+                                int temp = others[j];
+                                others[j] = others[j + 1];
+                                others[j + 1] = temp;
+                            }
+                        }
+                    }
+                    for (int i = 0; i < oddCount - 1; i++) {
+                        for (int j = 0; j < oddCount - i - 1; j++) {
+                            if (oddDiv3[j] < oddDiv3[j + 1]) {
+                                int temp = oddDiv3[j];
+                                oddDiv3[j] = oddDiv3[j + 1];
+                                oddDiv3[j + 1] = temp;
+                            }
+                        }
+                    }
+
                     System.out.println("Mảng sau khi sắp xếp:");
                     for (int i = 0; i < evenCount; i++) {
                         System.out.printf("%5d", evenDiv3[i]);
